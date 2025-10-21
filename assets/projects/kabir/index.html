@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ps">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>د مارکيټ د مالونو ثبت او ګټه/تاوان حساب</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg-center bg-success mb-4 shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-block" href="#"><i class="bi bi-shop"></i> د مارکيټ مدیریت سیسټم <i class="bi bi-cart4"></i></a>
+    </div>
+  </nav>
+
+  <div class="container mb-5 bg-dark">
+    <div class="row g-4">
+
+      <!-- Incoming -->
+      <div class="col-md-6">
+        <div class="card shadow-sm border-2">
+          <div class="card-header bg-primary text-block fw-bold"><i class="bi bi-box-arrow-in-down"></i> وارید شوی اجناس</div>
+          <div class="card-body">
+            <form id="incomingForm">
+              <div class="mb-3">
+                <label class="form-label">د جنس نوم</label>
+                <input required type="text" class="form-control" id="in_name" placeholder="Ex Oil: ">
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">د جنس مقدار </label>
+                  <input required type="number" min="0.01" step="0.01" class="form-control" id="in_qty">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">د جنس واحد قیمت</label>
+                  <input required type="number" min="0" step="0.01" class="form-control" id="in_cost">
+                </div>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-success w-100" type="submit"><i class="bi bi-cart4"></i> ثبت</button>
+                <button class="btn btn-outline-bluck w-50 bg-danger text-block" id="in_clear" type="button">حډف</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outgoing -->
+      <div class="col-md-6">
+        <div class="card shadow-sm border-2">
+          <div class="card-header bg-success text-block fw-bold"><i class="bi bi-box-arrow-up"></i> پلورل شوی جنسونه </div>
+          <div class="card-body">
+            <form id="outgoingForm">
+              <div class="mb-3">
+                <label class="form-label">د جنس نوم</label>
+                <select id="out_name" class="form-select" required>
+                  <option value="">--جنس انتخاب کړئ  --</option>
+                </select>
+              </div>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label class="form-label">دجنس مقدار</label>
+                  <input required type="number" min="0.01" step="0.01" class="form-control" id="out_qty">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label class="form-label">د جنس واحد قیمت</label>
+                  <input required type="number" min="0" step="0.01" class="form-control" id="out_price">
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label class="form-label">ټوټل قیمت</label>
+                  <input type="text" class="form-control bg-light text-center fw-bold" id="out_total" readonly>
+                </div>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-success w-100" type="submit"><i class="bi bi-cart-check"></i> ثبت</button>
+                <button class="btn btn-outline-bluck w-50 bg-danger text-block" id="out_clear" type="button">پاکول</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="col-12">
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-light fw-bold"><i class="bi bi-graph-up-arrow"></i> عمومي معلومات</div>
+          <div class="card-body">
+            <div class="row text-center g-3">
+              <div class="col-md-3">
+                <div class="p-3 border rounded bg-white shadow-sm">
+                  <div class="text-block small">د ټولی سرمایی ارزښت</div>
+                  <div id="totalStockValue" class="fw-bold fs-4 text-primary">0</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="p-3 border rounded bg-white shadow-sm">
+                  <div class="text-block small">ټوټل عاید</div>
+                  <div id="totalRevenue" class="fw-bold fs-4 text-success">0</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="p-3 border rounded bg-white shadow-sm">
+                  <div class="text-block small">ټوټل ګټه</div>
+                  <div id="totalProfitOnly" class="fw-bold fs-4 text-success">0</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="p-3 border rounded bg-white shadow-sm">
+                  <div class="text-block small">ټوټل تاوان</div>
+                  <div id="totalLossOnly" class="fw-bold fs-4 text-danger">0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div class="col-12">
+        <div class="mb-3">
+          <input type="text" class="form-control" id="searchInput" placeholder="د اجنساو پلټنه  ...">
+        </div>
+      </div>
+
+      <!-- Table --> 
+      <div class="col-12">
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-dark text-white fw-bold">
+            <i class="bi bi-table"></i> د اجناسو لست
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-hover align-middle text-center" id="itemsTable">
+                <thead class="table-primary">
+                  <tr>
+                    <th>#</th>
+                    <th>د جنس نوم</th>
+                    <th>مقدار</th>
+                    <th>اوسط قیمت</th>
+                    <th>د جنس قیمت</th>
+                    <th>د جنس پلور شوی مقدار</th>
+                    <th>عاید</th>
+                    <th>ګټه/تاوان</th>
+                    <th>د پلورل شوی جنس نیټه</th>
+                    <th>تغرات راوستل</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div class="d-flex justify-content-end gap-2 mt-3">
+              <button class="btn btn-outline-bluck bg-success text-white" id="exportCsv">
+                <i class="bi bi-file-earmark-spreadsheet"></i> CSV</button>
+              <button class="btn btn-outline-bluck bg-danger text-white" id="resetAll">
+                <i class="bi bi-trash"></i> Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="text-center text-secondary small py-3">
+    © 2025  د خوړو او پرچون مارکیټ سیسټم 
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const STORAGE_KEY = 'market_items_v4';
+    let items = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+    function saveItems(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); }
+    function findItemByName(name){ return items.find(i => i.name.toLowerCase() === name.toLowerCase()); }
+
+    function renderAll(){ renderSelect(); renderTable(); renderTotals(); }
+
+    function renderSelect(){
+      const sel = document.getElementById('out_name');
+      sel.innerHTML = '<option value="">-- جنس انتخاب کړئ --</option>';
+      items.forEach(it => sel.innerHTML += `<option>${it.name}</option>`);
+    }
+
+    function renderTable(filter=''){
+      const tbody = document.querySelector('#itemsTable tbody');
+      tbody.innerHTML = '';
+      items.forEach((it,i)=>{
+        if(it.name.toLowerCase().includes(filter.toLowerCase())){
+          const avg = it.stockQty ? it.totalCost/it.stockQty : 0;
+          const val = avg * it.stockQty;
+          const lastDate = it.lastDate ? new Date(it.lastDate).toLocaleString('ps-AF') : '';
+          tbody.innerHTML += `
+            <tr id="row-${it.id}">
+              <td>${i+1}</td>
+              <td>${it.name}</td>
+              <td>${it.stockQty.toFixed(2)}</td>
+              <td>${avg.toFixed(2)}</td>
+              <td>${val.toFixed(2)}</td>
+              <td>${it.soldQty.toFixed(2)}</td>
+              <td>${it.revenue.toFixed(2)}</td>
+              <td class="${it.profit>=0?'text-success':'text-danger'} fw-bold">${it.profit.toFixed(2)}</td>
+              <td>${lastDate}</td>
+              <td>
+                <button class='btn btn-sm btn-outline-primary me-1' onclick='editItem("${it.id}")'><i class="bi bi-pencil-square"></i></button>
+                <button class='btn btn-sm btn-outline-danger' onclick='deleteItem("${it.id}")'><i class="bi bi-trash3-fill"></i></button>
+              </td>
+            </tr>`;
+          // Alert if stock < 10
+          if(it.stockQty < 10){
+            setTimeout(()=>alert(`په ګدام کی تر 10 کم تعدا   ${it.name}  پاته دی`), 100);
+          }
+        }
+      });
+    }
+
+    function renderTotals(){
+      let stock=0, rev=0, profit=0, loss=0;
+      items.forEach(it=>{
+        const avg = it.stockQty ? it.totalCost/it.stockQty : 0;
+        stock += avg*it.stockQty;
+        rev += it.revenue;
+        if(it.profit >= 0) profit += it.profit;
+        else loss += Math.abs(it.profit);
+      });
+      document.getElementById('totalStockValue').textContent = stock.toFixed(2);
+      document.getElementById('totalRevenue').textContent = rev.toFixed(2);
+      document.getElementById('totalProfitOnly').textContent = profit.toFixed(2);
+      document.getElementById('totalLossOnly').textContent = loss.toFixed(2);
+    }
+
+    function editItem(id){
+      const tr = document.getElementById(`row-${id}`);
+      const it = items.find(x=>x.id==id);
+      const avg = it.stockQty ? it.totalCost/it.stockQty : 0;
+      tr.innerHTML = `
+        <td colspan="2"><input class="form-control form-control-sm" id="edit_name_${id}" value="${it.name}"></td>
+        <td><input type="number" class="form-control form-control-sm" id="edit_qty_${id}" value="${it.stockQty.toFixed(2)}"></td>
+        <td><input type="number" class="form-control form-control-sm" id="edit_cost_${id}" value="${avg.toFixed(2)}"></td>
+        <td colspan="5"></td>
+        <td>
+          <button class='btn btn-sm btn-success me-1' onclick='saveEdit("${id}")'><i class="bi bi-check2"></i></button>
+          <button class='btn btn-sm btn-secondary' onclick='renderAll()'><i class="bi bi-x"></i></button>
+        </td>`;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    function saveEdit(id){
+      const it = items.find(x=>x.id==id);
+      const newName = document.getElementById(`edit_name_${id}`).value.trim();
+      const newQty = parseFloat(document.getElementById(`edit_qty_${id}`).value);
+      const newCost = parseFloat(document.getElementById(`edit_cost_${id}`).value);
+      if(!newName || newQty < 0 || newCost < 0) return alert("غلت معلومات");
+      it.name = newName;
+      it.stockQty = newQty;
+      it.totalCost = newQty * newCost;
+      it.lastDate = new Date().toISOString();
+      saveItems(); renderAll();
+    }
+
+    incomingForm.addEventListener('submit', e=>{
+      e.preventDefault();
+      const name=in_name.value.trim(), qty=+in_qty.value, cost=+in_cost.value;
+      if(!name||qty<=0)return alert('ناسم ');
+      let it=findItemByName(name);
+      const total=qty*cost;
+      const now = new Date().toISOString();
+      if(it){ it.totalCost+=total; it.stockQty+=qty; it.lastDate=now; }
+      else items.push({id:Date.now(),name,stockQty:qty,totalCost:total,soldQty:0,revenue:0,profit:0,lastDate:now});
+      saveItems(); renderAll(); incomingForm.reset();
+    });
+
+    outgoingForm.addEventListener('submit', e=>{
+      e.preventDefault();
+      const name=out_name.value, qty=+out_qty.value, price=+out_price.value;
+      let it=findItemByName(name);
+      if(!it||qty<=0||qty>it.stockQty)return alert(' په کدام کی په کافی اندازه جنس شتون نلری');
+      const avg=it.totalCost/it.stockQty;
+      const rev=price*qty, prof=(price-avg)*qty;
+      it.stockQty-=qty; it.totalCost-=avg*qty; it.soldQty+=qty; it.revenue+=rev; it.profit+=prof;
+      it.lastDate = new Date().toISOString();
+      saveItems(); renderAll(); outgoingForm.reset();
+      document.getElementById('out_total').value = '';
+      document.getElementById('out_total').classList.remove('text-success','text-danger','text-primary');
+    });
+
+    document.getElementById('in_clear').onclick=()=>incomingForm.reset();
+    document.getElementById('out_clear').onclick=()=>{
+      outgoingForm.reset();
+      document.getElementById('out_total').value='';
+      document.getElementById('out_total').classList.remove('text-success','text-danger','text-primary');
+    };
+
+    function updateTotalPrice() {
+      const qty = parseFloat(document.getElementById('out_qty').value) || 0;
+      const priceInput = document.getElementById('out_price');
+      const name = document.getElementById('out_name').value;
+      const totalField = document.getElementById('out_total');
+      const it = findItemByName(name);
+
+      if(it && qty>0){
+        const avg = it.stockQty ? it.totalCost/it.stockQty : 0;
+        const price = parseFloat(priceInput.value) || avg;
+        const total = price * qty;
+        totalField.value = total.toFixed(2);
+        totalField.classList.remove('text-success','text-danger','text-primary');
+        if(price > avg) totalField.classList.add('text-success');
+        else if(price < avg) totalField.classList.add('text-danger');
+        else totalField.classList.add('text-primary');
+      } else {
+        const price = parseFloat(priceInput.value) || 0;
+        totalField.value = (price*qty).toFixed(2);
+        totalField.classList.remove('text-success','text-danger','text-primary');
+      }
+    }
+
+    document.getElementById('out_qty').addEventListener('input', updateTotalPrice);
+    document.getElementById('out_price').addEventListener('input', updateTotalPrice);
+    document.getElementById('out_name').addEventListener('change', updateTotalPrice);
+
+    document.getElementById('searchInput').addEventListener('input', e=>{
+      renderTable(e.target.value);
+    });
+
+    document.getElementById('exportCsv').onclick=()=>{
+      const csv=['Name,Stock,AvgCost,Value,Sold,Revenue,Profit,LastDate'];
+      items.forEach(it=>{
+        const avg=it.stockQty?it.totalCost/it.stockQty:0;
+        const lastDate = it.lastDate ? new Date(it.lastDate).toLocaleString('ps-AF') : '';
+        csv.push(`${it.name},${it.stockQty},${avg},${it.stockQty*avg},${it.soldQty},${it.revenue},${it.profit},${lastDate}`);
+      });
+      const blob=new Blob([csv.join('\n')],{type:'text/csv'});
+      const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='market.csv';a.click();
+    };
+
+    document.getElementById('resetAll').onclick=()=>{
+      if(confirm('ډاډه یاست؟')){items=[];saveItems();renderAll();}
+    };
+
+    function deleteItem(id){
+      if(confirm('ایا غواړئ حذف شي؟')){
+        items=items.filter(it=>it.id!=id);
+        saveItems(); renderAll();
+      }
+    }
+
+    renderAll();
+  </script>
+
+</body>
+</html>

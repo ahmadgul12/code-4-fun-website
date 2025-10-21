@@ -1,0 +1,169 @@
+:root {
+    --primary: #0d6efd;
+    --dark: #0b1b2b;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    line-height: 1.6;
+    color: #222;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+.hero-section .hero-slide {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-section .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11, 27, 43, 0.45), rgba(11, 27, 43, 0.6));
+}
+
+.hero-content {
+    position: relative;
+    color: #fff;
+    padding: 4rem 0;
+}
+
+.hero-content h1 {
+    text-shadow: 0 6px 22px rgba(0, 0, 0, 0.5);
+}
+
+.donor-logo {
+    max-height: 90px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: .9;
+    transition: filter .25s ease, transform .25s ease, opacity .25s ease;
+}
+
+.donor-logo:hover {
+    filter: none;
+    transform: translateY(-6px);
+    opacity: 1;
+}
+
+.card {
+    border: none;
+}
+
+.project-card img,
+.card-img-top {
+    height: 220px;
+    object-fit: cover;
+}
+
+.footer {
+    background: #071422;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width:767px) {
+    .hero-content {
+        padding: 2.5rem 0;
+    }
+
+    .hero-section .hero-slide {
+        min-height: 48vh;
+    }
+
+    .project-card img,
+    .card-img-top {
+        height: 180px;
+    }
+}
+
+.footer a:hover {
+    color: #ffc107 !important;
+    transition: color 0.3s ease;
+}
+
+.footer hr {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.team-card img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.team-card {
+    background: #fff;
+    border-radius: 12px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+}
+
+.team-card img {
+    border: 3px solid #0d6efd;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+}
+
+.team-card:hover img {
+    transform: scale(1.08);
+    border-color: #013b9a;
+}
+
+.team-card h5 {
+    color: #0d6efd;
+    transition: color 0.3s ease;
+}
+
+.team-card:hover h5 {
+    color: #013b9a;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.project-card img:hover {
+    transform: scale(1.08);
+}
+
+.project-card .card-body {
+    transition: background 0.3s ease;
+}
+
+.project-card:hover .card-body {
+    background: rgba(13, 110, 253, 0.03);
+}
+
+.project-card {
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-card img {
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
