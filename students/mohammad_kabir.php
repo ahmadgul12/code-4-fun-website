@@ -67,7 +67,7 @@
                                 A full web application for managing books, borrowers, and generating reports.
                             </p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="../assets/projects/kabir/index.php" class="btn btn-primary btn-sm">Live
+                                <a href="../assets/projects/kabir/index.html" class="btn btn-primary btn-sm">Live
                                     Demo</a>
                                 <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
                             </div>

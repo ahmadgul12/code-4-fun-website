@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ps">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online ticket booking system</title>
+    <!-- <link rel="stylesheet" href="bootstrap.min.css" /> -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: #80b9f1;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      h2,
+      h4 {
+        color: #4b161d;
+      }
+      .bus-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .row-seats {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
+      }
+      .seat {
+        width: 50px;
+        height: 50px;
+        margin: 2px;
+        cursor: pointer;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: all 0.3s;
+        border: 2px solid #0da025;
+      }
+      .seat:hover:not(.booked) {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+      }
+      .available {
+        background-color: #198754;
+        color: white;
+      }
+      .booked {
+        background-color: #dc3545;
+        color: white;
+        cursor: not-allowed;
+      }
+      .selected {
+        background-color: #0d6efd !important;
+      }
+      .driver-seat {
+        background-color: #ffc107;
+        width: 60px;
+        height: 50px;
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .aisle {
+        width: 20px;
+      }
+      .ticket-card {
+        border-left: 5px solid #0d6efd;
+      }
+      table th,
+      table td {
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-5">
+      <h2 class="text-center mb-4">د موټرانو لپاره آنلاین ټیکټ پلور سیسټم</h2>
+
+      <div class="row">
+        <div class="col-md-7 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h4 class="mb-3">چوکۍ انتخاب کړئ</h4>
+              <div class="bus-container" id="seats"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5 mb-4">
+          <div class="card shadow-sm ticket-card">
+            <div class="card-body">
+              <h4 class="mb-3">د ټیکټ معلومات</h4>
+              <form id="ticketForm">
+                <div class="mb-3">
+                  <label class="form-label">د مسافر نوم</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="passengerName"
+                    placeholder="Mahmoud Zia"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">ولایت</label>
+                  <select class="form-select" id="province" required>
+                    <option value="">ولایت انتخاب کړئ</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">ولسوالی</label>
+                  <select class="form-select" id="district" required>
+                    <option value="">ولسوالی انتخاب کړئ</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">د موبایل شمېره</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="passengerNumber"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">د ټیکټ قیمت</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="ticketPrice"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">د سفر نېټه</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="travelDate"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">د سفر وخت</label>
+                  <input
+                    type="time"
+                    class="form-control"
+                    id="travelTime"
+                    required
+                  />
+                </div>
+
+                <input type="hidden" id="selectedSeat" />
+                <button type="submit" class="btn btn-primary w-100">
+                  ټیکټ ثبت کړئ
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mt-4">
+        <div class="card-body">
+          <h4 class="mb-3">پلورل شوي ټیکټونه</h4>
+          <table class="table table-striped table-hover">
+            <thead class="table-primary">
+              <tr>
+                <th>چوکۍ</th>
+                <th>نوم</th>
+                <th>سفر ځای</th>
+                <th>موبایل نمبر</th>
+                <th>قیمت</th>
+                <th>نېټه</th>
+                <th>وخت</th>
+                <th>ټرانسپورټ ډول</th>
+              </tr>
+            </thead>
+            <tbody id="bookedTickets"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const totalRows = 10; // د بس کتارونه
+      const seatsContainer = document.getElementById("seats");
+      const bookedTickets = [];
+
+      const driver = document.createElement("div");
+      driver.classList.add("driver-seat");
+      driver.textContent = "چلوونکی";
+      seatsContainer.appendChild(driver);
+
+      let seatNumber = 1;
+      for (let row = 0; row < totalRows; row++) {
+        const rowDiv = document.createElement("div");
+        rowDiv.classList.add("row-seats");
+
+        // 2 چپ خوا
+        for (let i = 0; i < 2; i++) {
+          const seat = document.createElement("div");
+          seat.classList.add("seat", "available");
+          seat.textContent = seatNumber;
+          seat.dataset.seatNumber = seatNumber;
+          seat.addEventListener("click", () => selectSeat(seat));
+          rowDiv.appendChild(seat);
+          seatNumber++;
+        }
+
+        // منځنۍ لاره
+        const aisle = document.createElement("div");
+        aisle.classList.add("aisle");
+        rowDiv.appendChild(aisle);
+
+        // 2 ښي خوا
+        for (let i = 0; i < 2; i++) {
+          const seat = document.createElement("div");
+          seat.classList.add("seat", "available");
+          seat.textContent = seatNumber;
+          seat.dataset.seatNumber = seatNumber;
+          seat.addEventListener("click", () => selectSeat(seat));
+          rowDiv.appendChild(seat);
+          seatNumber++;
+        }
+
+        seatsContainer.appendChild(rowDiv);
+      }
+
+      function selectSeat(seat) {
+        if (seat.classList.contains("booked")) {
+          alert("دغه چوکۍ مخکې پلورل شوې ده!");
+          return;
+        }
+        document
+          .querySelectorAll(".seat")
+          .forEach((s) => s.classList.remove("selected"));
+        seat.classList.add("selected");
+        document.getElementById("selectedSeat").value = seat.dataset.seatNumber;
+      }
+
+      // ولایتونه او ولسوالی
+      const provinces = {
+        کابل: ["شهر نو", "", "چاریکار"],
+        هرات: ["هرات ښار", "گلران", "کوهسان", "غوریان"],
+        قندهار: ["قندهار ښار", "ارغنداب", "ماینده", "سپین بولدک"],
+        کاپیسا: ["کاپیسا ښار", "نجراب", "سیاف", "تگاب"],
+      };
+
+      const provinceSelect = document.getElementById("province");
+      const districtSelect = document.getElementById("district");
+      Object.keys(provinces).forEach((p) => {
+        const option = document.createElement("option");
+        option.value = p;
+        option.textContent = p;
+        provinceSelect.appendChild(option);
+      });
+      provinceSelect.addEventListener("change", function () {
+        const districts = provinces[this.value] || [];
+        districtSelect.innerHTML =
+          '<option value="">ولسوالی انتخاب کړئ</option>';
+        districts.forEach((d) => {
+          const option = document.createElement("option");
+          option.value = d;
+          option.textContent = d;
+          districtSelect.appendChild(option);
+        });
+      });
+
+      document
+        .getElementById("ticketForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const seatNumber = document.getElementById("selectedSeat").value;
+          if (!seatNumber) {
+            alert("لطفاً یوه چوکۍ انتخاب کړئ!");
+            return;
+          }
+
+          const ticket = {
+            seat: seatNumber,
+            name: document.getElementById("passengerName").value,
+            province: document.getElementById("province").value,
+            district: document.getElementById("district").value,
+            number: document.getElementById("passengerNumber").value,
+            price: document.getElementById("ticketPrice").value,
+            date: document.getElementById("travelDate").value,
+            time: document.getElementById("travelTime").value,
+            // transport: document.getElementById('transportType').value,
+          };
+
+          const seatDiv = document.querySelector(
+            `.seat[data-seat-number='${seatNumber}']`
+          );
+          if (seatDiv.classList.contains("booked")) {
+            alert("دغه چوکۍ مخکې پلورل شوې ده!");
+            return;
+          }
+
+          seatDiv.classList.remove("available");
+          seatDiv.classList.add("booked");
+          bookedTickets.push(ticket);
+          updateBookedTickets();
+          this.reset();
+          document.getElementById("selectedSeat").value = "";
+        });
+
+      function updateBookedTickets() {
+        const tbody = document.getElementById("bookedTickets");
+        tbody.innerHTML = "";
+        bookedTickets.forEach((t) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+      <td>${t.seat}</td>
+      <td>${t.name}</td>
+      <td>${t.province} / ${t.district}</td>
+      <td>${t.number}</td>
+      <td>${t.price}</td>
+      <td>${t.date}</td>
+      <td>${t.time}</td>
+      <td>${t.transport}</td>
+    `;
+          tbody.appendChild(tr);
+        });
+      }
+    </script>
+    <!-- <script src="bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+   
+  </body>
+</html>

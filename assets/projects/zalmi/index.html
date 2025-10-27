@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ps">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>پرمختللې راجستر اپ - ډاکټر</title>
+    <!-- <link rel="stylesheet" href="bootstrap.min.css" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+ <style>
+      body {
+        background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+        transition: 0.6s ease, color 0.6s ease;
+        font-family: "Noto Naskh Arabic", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .dark-mode {
+        background: linear-gradient(135deg, #121212, #1e1e1e);
+        color: #e0e0e0 !important;
+      }
+      .card {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+      }
+      .dark-mode .card {
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .btn {
+        border-radius: 20px;
+        transition: all 0.3s ease;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      .navbar {
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.85);
+        transition: all 0.3s ease;
+      }
+      .dark-mode .navbar {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+      footer {
+        margin-top: auto;
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 15px 0;
+        transition: all 0.3s ease;
+      }
+      .dark-mode footer {
+        background-color: rgba(0, 0, 0, 0.6);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ddd;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 🧭 Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm px-3 mb-4">
+      <div class="container-fluid">
+        <a
+          class="navbar-brand d-flex align-items-center gap-2 fw-bold text-primary"
+          href="#"
+        >
+          <img
+            id="clinicLogo"
+            src="https://cdn-icons-png.flaticon.com/512/2966/2966481.png"
+            width="40"
+            height="40"
+            class="rounded-circle border shadow-sm"
+          />
+          KHAN PRIVATE HOSPITAL
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">🏠 home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">💊 priscreption</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">📋 petiens</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">📞 call</a></li>
+          </ul>
+          <button id="modeToggle" class="btn btn-outline-dark btn-sm ms-3">
+            🌙 تیاره حالت
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 💊 د اپ مین برخه -->
+    <div class="container py-4">
+      <div class="row g-4">
+        <!-- 🩺 د ناروغ فورم -->
+        <div id="patientFormCard" class="col-lg-6">
+          <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body">
+              <h5 class="card-title mb-3 text-success fw-semibold">
+                🩺 نوی ناروغ ثبت کړئ
+              </h5>
+              <form id="patientForm" novalidate>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >name <span class="text-danger">*</span></label
+                  >
+                  <input
+                    id="name"
+                    class="form-control form-control-lg"
+                    placeholder="د ناروغ نوم..."
+                    required
+                  />
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold"
+                      >illness <span class="text-danger">*</span></label
+                    >
+                    <input id="condition" class="form-control" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold"
+                      >kind <span class="text-danger">*</span></label
+                    >
+                    <select id="conditionType" class="form-select" required>
+                      <option value="ساري">commonacable</option>
+                      <option value="غېرساري">non commonacable</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold"
+                      >petient number <span class="text-danger">*</span></label
+                    >
+                    <input id="patientNumber" class="form-control" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">past history</label>
+                    <input id="previousCondition" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">address</label>
+                  <input id="address" class="form-control" />
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">date of birth </label>
+                    <input id="dob" type="date" class="form-control" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">visit time </label>
+                    <input
+                      id="appointment"
+                      type="datetime-local"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                  <div class="col-md-3">
+                    <input id="bp" class="form-control" placeholder="BP" />
+                  </div>
+                  <div class="col-md-3">
+                    <input id="hr" class="form-control" placeholder="HR" />
+                  </div>
+                  <div class="col-md-3">
+                    <input id="temp" class="form-control" placeholder="Temp" />
+                  </div>
+                  <div class="col-md-3">
+                    <input id="rr" class="form-control" placeholder="Resp." />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">priscreption</label>
+                  <textarea
+                    id="prescription"
+                    class="form-control"
+                    rows="3"
+                    placeholder="د درملو نسخه..."
+                  ></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">drug history </label>
+                  <input id="allergies" class="form-control" />
+                </div>
+
+                <input type="hidden" id="editIndex" value="-1" />
+
+                <div class="d-flex gap-2">
+                  <button type="submit" class="btn btn-success px-4">
+                    ✅ ثبت
+                  </button>
+                  <button
+                    type="button"
+                    id="newBtn"
+                    class="btn btn-outline-secondary px-4"
+                  >
+                    🆕 نوی
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- 📋 د ناروغانو لېست -->
+        <div id="patientsListCard" class="col-lg-6">
+          <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body">
+              <h5 class="card-title mb-3 text-primary fw-semibold">
+                📋 petient list
+              </h5>
+              <input
+                id="searchInput"
+                class="form-control mb-3"
+                placeholder="لټون د نوم، ناروغي یا نمبر له مخې..."
+              />
+              <div id="patientsList" class="list-group"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🌙 Footer / د ډاکټر معلومات -->
+    <footer id="contactInfo">
+      <p class="mb-0">
+        © KHAN PRIVATE HOSPITAL —
+        <span class="text-primary">ښه پاملرنه، دقیق تشخیص، روغ ژوند</span>
+      </p>
+      <small>📞 phone: 0700212697 | ✉️ Email: zulmaikhan132@gmail.come</small>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      const qs = (s) => document.querySelector(s);
+      let patients = [];
+      const STORAGE_KEY = "patients_advanced_list";
+      const LOGO_KEY = "clinic_logo";
+
+      function load() {
+        const r = localStorage.getItem(STORAGE_KEY);
+        patients = r ? JSON.parse(r) : [];
+        const logo = localStorage.getItem(LOGO_KEY);
+        if (logo) qs("#clinicLogo").src = logo;
+      }
+      function save() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(patients));
+      }
+
+      // 📄 PDF جوړونه
+      function generatePDF(patient) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.setFontSize(16);
+        doc.text("KHAN PRIVATE HOSPITAL", 105, 20, null, null, "center");
+        doc.setFontSize(12);
+        doc.text(`نوم: ${patient.name}`, 20, 40);
+        doc.text(
+          `ناروغي: ${patient.condition} (${patient.conditionType})`,
+          20,
+          50
+        );
+        doc.text(`ناروغ نمبر: ${patient.number}`, 20, 60);
+        doc.text(`پخوانۍ ناروغي: ${patient.previousCondition || "—"}`, 20, 70);
+        doc.text(`ادرس: ${patient.address || "—"}`, 20, 80);
+        doc.text(`د زېږېدو نېټه: ${patient.dob || "—"}`, 20, 90);
+        doc.text(`د ملاقات وخت: ${patient.appointment || "—"}`, 20, 100);
+        doc.text(`نسخه: ${patient.prescription || "—"}`, 20, 110);
+        doc.text(
+          `BP: ${patient.bp} | HR: ${patient.hr} | Temp: ${patient.temp}`,
+          20,
+          120
+        );
+        doc.text(`د درملو تاریخچه: ${patient.allergies || "—"}`, 20, 130);
+
+        doc.save(`${patient.name}_MedicalRecord.pdf`);
+      }
+
+      function renderList() {
+        const c = qs("#patientsList");
+        const s = qs("#searchInput").value.toLowerCase();
+        c.innerHTML = "";
+        let list = patients.slice();
+        if (s)
+          list = list.filter((p) =>
+            (p.name + p.condition + p.number).toLowerCase().includes(s)
+          );
+        for (const [i, p] of list.entries()) {
+          const item = document.createElement("div");
+          item.className =
+            "list-group-item list-group-item-action border rounded-3 mb-2";
+          item.innerHTML = `
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <strong>${p.name}</strong>
+        <div class="text-muted small">ناروغي: ${p.condition} (${
+            p.conditionType
+          }) | نمبر: ${p.number}</div>
+      </div>
+      <button class="btn btn-sm btn-outline-primary" onclick="toggleDetails(${i})">تفصیل</button>
+    </div>
+    <div id="details-${i}" class="collapse mt-2">
+      <div class="p-3 bg-light rounded-3">
+        <p class="mb-1"><strong>پخوانۍ ناروغي:</strong> ${
+          p.previousCondition || "—"
+        }</p>
+        <p class="mb-1"><strong>ادرس:</strong> ${p.address || "—"}</p>
+        <p class="mb-1"><strong>نسخه:</strong> ${p.prescription || "—"}</p>
+        <p class="mb-2"><strong>BP:</strong> ${p.bp} | <strong>HR:</strong> ${
+            p.hr
+          } | <strong>Temp:</strong> ${p.temp}</p>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-info" onclick="editPatient(${i})">✏️ سمول</button>
+          <button class="btn btn-sm btn-danger" onclick="deletePatient(${i})">🗑️ حذف</button>
+          <button class="btn btn-sm btn-success" onclick="generatePDF(patients[${i}])">📄 PDF</button>
+        </div>
+      </div>
+    </div>`;
+          c.appendChild(item);
+        }
+      }
+      function toggleDetails(i) {
+        qs(`#details-${i}`).classList.toggle("show");
+      }
+
+      qs("#patientForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const i = parseInt(qs("#editIndex").value);
+        const o = {
+          name: qs("#name").value.trim(),
+          condition: qs("#condition").value.trim(),
+          conditionType: qs("#conditionType").value,
+          number: qs("#patientNumber").value.trim(),
+          previousCondition: qs("#previousCondition").value.trim(),
+          address: qs("#address").value.trim(),
+          dob: qs("#dob").value || null,
+          appointment: qs("#appointment").value || null,
+          prescription: qs("#prescription").value.trim(),
+          bp: qs("#bp").value.trim(),
+          hr: qs("#hr").value.trim(),
+          temp: qs("#temp").value.trim(),
+          allergies: qs("#allergies").value.trim(),
+          createdAt: new Date().toISOString(),
+        };
+        if (i >= 0) {
+          patients[i] = o;
+          qs("#editIndex").value = -1;
+        } else {
+          patients.push(o);
+        }
+        save();
+        e.target.reset();
+        renderList();
+      });
+
+      qs("#newBtn").addEventListener("click", () => {
+        qs("#patientForm").reset();
+        qs("#editIndex").value = -1;
+      });
+      qs("#searchInput").addEventListener("input", () => renderList());
+
+      function editPatient(i) {
+        const p = patients[i];
+        for (const k in p) {
+          if (qs("#" + k)) qs("#" + k).value = p[k];
+        }
+        qs("#editIndex").value = i;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function deletePatient(i) {
+        if (!confirm("ایا د دې ناروغ حذف کول غواړئ؟")) return;
+        patients.splice(i, 1);
+        save();
+        renderList();
+      }
+
+      qs("#modeToggle").addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        qs("#modeToggle").textContent = document.body.classList.contains(
+          "dark-mode"
+        )
+          ? "☀️ روښانه حالت"
+          : "🌙 تیاره حالت";
+      });
+
+      // 📌 نوبار لینکونو لپاره سکرول
+      const scrollToSection = (id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
+      document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const text = link.textContent;
+          if (text.includes("نسخه")) scrollToSection("patientFormCard");
+          else if (text.includes("ناروغان"))
+            scrollToSection("patientsListCard");
+          else if (text.includes("اړیکه")) scrollToSection("contactInfo");
+        });
+      });
+
+      load();
+      renderList();
+    </script>
+    <!-- <script src="bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+   
+  </body>
+</html>

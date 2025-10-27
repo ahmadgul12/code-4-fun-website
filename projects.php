@@ -33,7 +33,7 @@
                                 </a>
                             </p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="assets/projects/kabir/index.php" class="btn btn-primary btn-sm">Live Demo</a>
+                                <a href="assets/projects/kabir/index.html" class="btn btn-primary btn-sm">Live Demo</a>
                                 <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                 </a>
                             </p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="assets/projects/kabir/index.php" class="btn btn-primary btn-sm">Live Demo</a>
+                                <a href="assets/projects/kabir/index.html" class="btn btn-primary btn-sm">Live Demo</a>
                                 <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                                 </a>
                             </p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="assets/projects/aziz/index.php" class="btn btn-primary btn-sm">Live Demo</a>
+                                <a href="assets/projects/aziz/index.html" class="btn btn-primary btn-sm">Live Demo</a>
                                 <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                                 </a>
                             </p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="assets/projects/kabir/index.php" class="btn btn-primary btn-sm">Live Demo</a>
+                                <a href="assets/projects/kabir/index.html" class="btn btn-primary btn-sm">Live Demo</a>
                                 <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                                 </a>
                             </p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="assets/projects/kabir/index.php" class="btn btn-primary btn-sm">Live Demo</a>
+                                <a href="assets/projects/nasrat/index.html" class="btn btn-primary btn-sm">Live Demo</a>
                                 <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                                 </a>
                             </p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="assets/projects/kabir/index.php" class="btn btn-primary btn-sm">Live Demo</a>
+                                <a href="assets/projects/zalmi/index.html" class="btn btn-primary btn-sm">Live Demo</a>
                                 <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                                 </a>
                             </p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="assets/projects/kabir/index.php" class="btn btn-primary btn-sm">Live Demo</a>
+                                <a href="assets/projects/zya/index.html" class="btn btn-primary btn-sm">Live Demo</a>
                                 <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
                             </div>
                         </div>
@@ -188,13 +188,13 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Pharmacy system </h5>
                             <p class="card-text text-muted small">
-                                A full web application to manage books, borrowers and generate reports.<br>
+                                A full web application to manage Drugs, borrowers and generate reports.<br>
                                 By: <a href="students/Mohammad_Rahim.php"
                                     class="text-decoration-none fw-semibold">Mohammad Rahim
                                 </a>
                             </p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="assets/projects/kabir/index.php" class="btn btn-primary btn-sm">Live Demo</a>
+                                <a href="assets/projects/rahim/index.html" class="btn btn-primary btn-sm">Live Demo</a>
                                 <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
                             </div>
                         </div>

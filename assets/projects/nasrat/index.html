@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ps">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دندوداعلاناتو سایټ - د مسلکي پرمختګ ځای</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Normal', serif; background-color: #f8f9fa; }
+.navbar { background-color: #28a745; }
+.navbar-brand, .nav-link { color: white !important; }
+.hero-section { background-color: #28a745; color: white; padding: 80px 0; text-align: center; }
+.hero-section h1 { font-size: 3rem; }
+.service-card { border: none; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s; }
+.service-card:hover { transform: translateY(-10px); }
+.job-card { border: 1px solid #ddd; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+.modal-label { font-weight: bold; }
+.footer { background-color: #28a745; color: white; padding: 20px 0; text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+<div class="container">
+<a class="navbar-brand" href="#"> د د ندو د پیدا کولو سایټ</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link active" href="#">کور</a></li>
+<li class="nav-item"><a class="nav-link" href="#jobs">دندې</a></li>
+<li class="nav-item"><a class="nav-link" href="#cv">د CV جوړونه</a></li>
+<li class="nav-item"><a class="nav-link" href="#advice">مشوره</a></li>
+<li class="nav-item"><a class="nav-link" href="#contact">اړیکه</a></li>
+<li class="nav-item"><a class="nav-link" href="#" id="openAddJobModalBtn">دنده اعلان</a></li>
+<li class="nav-item"><a class="nav-link" href="#" id="openRegisterModalBtn">ثبت نام</a></li>
+<li class="nav-item"><a class="nav-link" href="#" id="openAdminModalBtn">مدیریت</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+<div class="container">
+<h1>ستاسو د مسلکي پرمختګ لپاره تر ټولو غوره ځای</h1>
+<p>د دندو د پیدا کولو سایټ</p>
+<a href="#jobs" class="btn btn-light btn-lg">د د ندوو لست وګوره</a>
+</div>
+</section>
+
+<!-- Services Section -->
+<section class="container py-5" id="services">
+<h2 class="text-center mb-5">زموږ خدمتونه</h2>
+<div class="row text-center">
+<div class="col-md-4 mb-4">
+<div class="card service-card">
+<div class="card-body">
+<h5 class="card-title">د کار موندنه</h5>
+<p class="card-text">په اسانۍ سره د خپلو وړتیاوو مطابق دندې پیدا کړئ.</p>
+<a href="#jobs" class="btn btn-outline-success">نور معلومات</a>
+</div>
+</div>
+</div>
+<div class="col-md-4 mb-4">
+<div class="card service-card">
+<div class="card-body">
+<h5 class="card-title">د CV جوړونه</h5>
+<p class="card-text">خپل مسلکي CV جوړ کړئ او دندې ته یې واستوئ.</p>
+<a href="#cv" class="btn btn-outline-success">نور معلومات</a>
+</div>
+</div>
+</div>
+<div class="col-md-4 mb-4">
+<div class="card service-card">
+<div class="card-body">
+<h5 class="card-title">مشوره او لارښود</h5>
+<p class="card-text">موږ تاسې سره د مسلکي پرمختګ په برخه کې مشوره کوو.</p>
+<a href="#advice" class="btn btn-outline-success">نور معلومات</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Jobs Section -->
+<section class="container py-5" id="jobs">
+<h2 class="text-center mb-5">اوسني دندې</h2>
+<div class="row" id="jobList"></div>
+</section>
+
+<!-- CV Builder Section -->
+<section class="container py-5" id="cv">
+<h2 class="text-center mb-5">د CV جوړونه</h2>
+<form id="cvForm" class="row g-3">
+<div class="col-md-6"><input type="text" class="form-control" placeholder="ستاسو نوم" required></div>
+<div class="col-md-6"><input type="email" class="form-control" placeholder="برېښنالیک" required></div>
+<div class="col-12"><input type="text" class="form-control" placeholder="مسلکي تجربه" required></div>
+<div class="col-12"><textarea class="form-control" placeholder="لنډه پېژندنه" rows="4" required></textarea></div>
+<div class="col-12 text-center"><button type="submit" class="btn btn-success">CV جوړ کړئ</button></div>
+</form>
+</section>
+
+<!-- Advice Section -->
+<section class="container py-5" id="advice">
+<h2 class="text-center mb-5">مشوره او لارښود</h2>
+<p class="text-center">موږ دلته یو څو مشورې درکړو چې ستاسو د مسلکي پرمختګ کې مرسته وکړي:</p>
+<ul class="list-group list-group-flush text-center">
+<li class="list-group-item">د خپلو مهارتونو پراختیا ته دوام ورکړئ.</li>
+<li class="list-group-item">د نوي فرصتونو لپاره همیشه چمتو اوسئ.</li>
+<li class="list-group-item">په CV او مرکو کې خپل ځان په غوره ډول وړاندې کړئ.</li>
+</ul>
+</section>
+
+<!-- Contact Section -->
+<section class="container py-5" id="contact">
+<h2 class="text-center mb-5">اړیکه</h2>
+<form id="contactForm" class="row g-3">
+<div class="col-md-6"><input type="text" class="form-control" placeholder="ستاسو نوم" required></div>
+<div class="col-md-6"><input type="email" class="form-control" placeholder="برېښنالیک" required></div>
+<div class="col-12"><textarea class="form-control" placeholder="پیغام" rows="4" required></textarea></div>
+<div class="col-12 text-center"><button type="submit" class="btn btn-success">پیغام واستوئ</button></div>
+</form>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<p>&copy; 2025 دد ندو د پیدا کولو سایټ. ټول حقوق خوندي دي.</p>
+</div>
+</footer>
+
+<!-- Modals for Job & Registration -->
+<div class="modal fade" id="addJobModal" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">دنده اعلان</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+<form id="addJobForm">
+<div class="mb-3"><label class="modal-label">د دندې ډول</label><input type="text" class="form-control" required id="jobType"></div>
+<div class="mb-3"><label class="modal-label">د د ندې ځای</label><input type="text" class="form-control" required id="jobLocation"></div>
+<div class="mb-3"><label class="modal-label">د دندې وخت</label><input type="datetime-local" class="form-control" required id="jobTime"></div>
+<div class="mb-3"><label class="modal-label">د دندې کټګوري</label><input type="text" class="form-control" required id="jobCategory"></div>
+<div class="mb-3"><label class="modal-label">د تعلیم کچه</label><input type="text" class="form-control" required id="jobEducation"></div>
+<div class="mb-3"><label class="modal-label">د اشخاصو تعداد</label><input type="number" class="form-control" required id="jobPersons"></div>
+<div class="mb-3"><label class="modal-label">سازمان ایمیل</label><input type="email" class="form-control" required id="jobEmail"></div>
+<div class="mb-3"><label class="modal-label">نور اړین معلومات</label><textarea class="form-control" id="jobInfo" rows="3"></textarea></div>
+<button type="submit" class="btn btn-success">اعلان ثبت کړئ</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="registerModal" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">د ثبت نام فارم</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body">
+<form id="registerForm">
+<div class="mb-3"><label class="modal-label">نوم</label><input type="text" class="form-control" required id="regName"></div>
+<div class="mb-3"><label class="modal-label">برېښنالیک</label><input type="email" class="form-control" required id="regEmail"></div>
+<div class="mb-3"><label class="modal-label">د غوره شوې د ندې نوم</label><select class="form-select" id="regJobSelect" required></select></div>
+<button type="submit" class="btn btn-success">ثبت نام وکړئ</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="adminModal" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">مدیریت</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body"><div id="adminJobList"></div></div>
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Modals
+const addJobModal = new bootstrap.Modal(document.getElementById('addJobModal'));
+const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+const adminModal = new bootstrap.Modal(document.getElementById('adminModal'));
+
+document.getElementById('openAddJobModalBtn').addEventListener('click', () => addJobModal.show());
+document.getElementById('openRegisterModalBtn').addEventListener('click', () => { updateJobSelect(); registerModal.show(); });
+document.getElementById('openAdminModalBtn').addEventListener('click', () => { renderAdminJobs(); adminModal.show(); });
+
+// LocalStorage Functions
+function getJobs() { return JSON.parse(localStorage.getItem('jobs') || '[]'); }
+function saveJobs(jobs) { localStorage.setItem('jobs', JSON.stringify(jobs)); }
+function getRegistrations() { return JSON.parse(localStorage.getItem('registrations') || '[]'); }
+function saveRegistrations(regs) { localStorage.setItem('registrations', JSON.stringify(regs)); }
+
+// Render Jobs - د نېټې له مخې ترتیب شوی (وروستي دندې په سر کې)
+function renderJobs() {
+    const jobList = document.getElementById('jobList');
+    jobList.innerHTML = '';
+    const now = new Date().getTime();
+    let jobs = getJobs();
+
+    // یوازې راتلونکې دندې واخلو
+    jobs = jobs.filter(job => new Date(job.jobTime).getTime() > now);
+
+    // د نېټې له مخې کمیدونکې ترتیب - وروستۍ نوې دنده په سر کې
+    jobs.sort((a, b) => new Date(b.jobTime).getTime() - new Date(a.jobTime).getTime());
+
+    saveJobs(jobs);
+
+    jobs.forEach(job => {
+        const div = document.createElement('div');
+        div.classList.add('col-md-4');
+        div.innerHTML = `
+        <div class="job-card">
+            <h5>${job.jobType}</h5>
+            <p><strong>ځای:</strong> ${job.jobLocation}</p>
+            <p><strong>وخت:</strong> ${new Date(job.jobTime).toLocaleString()}</p>
+            <p><strong>کټګوري:</strong> ${job.jobCategory}</p>
+            <p><strong>تعلیم:</strong> ${job.jobEducation}</p>
+            <p><strong>تعداد:</strong> ${job.jobPersons}</p>
+            <p><strong>سازمان ایمیل:</strong> ${job.jobEmail}</p>
+            <p><strong>نور معلومات:</strong> ${job.jobInfo}</p>
+        </div>`;
+        jobList.appendChild(div);
+    });
+}
+
+// Update Register Job Select
+function updateJobSelect() {
+    const select = document.getElementById('regJobSelect');
+    select.innerHTML = '';
+    let jobs = getJobs();
+
+    // راتلونکې دندې د نېټې له مخې ترتیب
+    jobs = jobs.filter(job => new Date(job.jobTime).getTime() > new Date().getTime())
+               .sort((a,b) => new Date(b.jobTime).getTime() - new Date(a.jobTime).getTime());
+
+    jobs.forEach(job => {
+        const opt = document.createElement('option');
+        opt.value = job.jobType;
+        opt.textContent = job.jobType;
+        select.appendChild(opt);
+    });
+}
+
+// Add Job
+document.getElementById('addJobForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const job = {
+        jobType: document.getElementById('jobType').value,
+        jobLocation: document.getElementById('jobLocation').value,
+        jobTime: document.getElementById('jobTime').value,
+        jobCategory: document.getElementById('jobCategory').value,
+        jobEducation: document.getElementById('jobEducation').value,
+        jobPersons: document.getElementById('jobPersons').value,
+        jobEmail: document.getElementById('jobEmail').value,
+        jobInfo: document.getElementById('jobInfo').value
+    };
+
+    // د LocalStorage څخه ترلاسه کول او نوې دنده اضافه کول
+    const jobs = getJobs();
+    jobs.push(job);
+    saveJobs(jobs);
+
+    // فوراً د نوې دندې کارت د اوسني دندو په سر کې اضافه کول
+    const jobList = document.getElementById('jobList');
+    const div = document.createElement('div');
+    div.classList.add('col-md-4');
+    div.innerHTML = `
+    <div class="job-card">
+        <h5>${job.jobType}</h5>
+        <p><strong>ځای:</strong> ${job.jobLocation}</p>
+        <p><strong>وخت:</strong> ${new Date(job.jobTime).toLocaleString()}</p>
+        <p><strong>کټګوري:</strong> ${job.jobCategory}</p>
+        <p><strong>تعلیم:</strong> ${job.jobEducation}</p>
+        <p><strong>تعداد:</strong> ${job.jobPersons}</p>
+        <p><strong>سازمان ایمیل:</strong> ${job.jobEmail}</p>
+        <p><strong>نور معلومات:</strong> ${job.jobInfo}</p>
+    </div>`;
+    jobList.prepend(div); // prepend: کارت په سر کې اضافه کوي
+
+    addJobModal.hide();
+    e.target.reset();
+});
+
+// Register Form
+document.getElementById('registerForm').addEventListener('submit', e => {
+e.preventDefault();
+const registration = {
+name: document.getElementById('regName').value,
+email: document.getElementById('regEmail').value,
+jobType: document.getElementById('regJobSelect').value
+};
+const regs = getRegistrations();
+regs.push(registration);
+saveRegistrations(regs);
+alert('ستاسو ثبت نام بریالی شو!');
+registerModal.hide();
+e.target.reset();
+});
+
+// Admin View
+function renderAdminJobs() {
+const container = document.getElementById('adminJobList');
+container.innerHTML = '';
+const jobs = getJobs();
+const regs = getRegistrations();
+jobs.forEach(job => {
+const jobRegs = regs.filter(r => r.jobType === job.jobType);
+const div = document.createElement('div');
+div.classList.add('mb-4', 'p-3', 'border');
+div.innerHTML = `
+<h5>${job.jobType}</h5>
+<p><strong>ځای:</strong> ${job.jobLocation} | <strong>وخت:</strong> ${new Date(job.jobTime).toLocaleString()}</p>
+<p><strong>سازمان ایمیل:</strong> ${job.jobEmail}</p>
+<p><strong>ثبت شوي کسان:</strong> ${jobRegs.length}</p>
+<ul>${jobRegs.map(r => `<li>${r.name} (${r.email})</li>`).join('')}</ul>
+`;
+container.appendChild(div);
+});
+const now = new Date().getTime();
+const activeJobs = jobs.map(j => j.jobType);
+const updatedRegs = regs.filter(r => activeJobs.includes(r.jobType));
+saveRegistrations(updatedRegs);
+}
+
+// Auto render jobs on load
+renderJobs();
+setInterval(renderJobs, 10000);
+
+// CV Form
+document.getElementById('cvForm').addEventListener('submit', function(e) {
+e.preventDefault();
+alert('ستاسو CV بریالۍ توګه ثبت شو!');
+this.reset();
+});
+
+// Contact Form
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+e.preventDefault();
+alert('ستاسو پیغام بریالۍ توګه واستول شو!');
+this.reset();
+});
+</script>
+</body>
+</html>

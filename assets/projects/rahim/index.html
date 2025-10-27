@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ps">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>د دواخانو کنټرول سیسټم</title>
+
+  <link rel="stylesheet" href="./bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+<body class="container py-4">
+
+  <h2 class="text-center mb-4">💊  د دواخانو کنټرول سیسټم</h2>
+
+<!-- د درملو ثبت -->
+<div class="card">
+<div class="card-header bg-primary text-white text-center">درمل ثبت کړئ</div>
+<div class="card-body">
+<div class="row g-3">
+  <div class="col-md-2"><input id="medName" type="text" class="form-control" placeholder="د درمل نوم"></div>
+  <div class="col-md-2"><input id="buyPrice" type="number" class="form-control" placeholder="د اخیستلو قیمت"></div>
+  <div class="col-md-2"><input id="sellPriceInput" type="number" class="form-control" placeholder="د پلورلو قیمت"></div>
+  <div class="col-md-2"><input id="quantity" type="text" class="form-control" placeholder="اندازه (مثال: 20 کارټنه)"></div>
+  <div class="col-md-2"><input id="expiry" type="date" class="form-control"></div>
+  <div class="col-md-2">
+    <input id="medCountry" list="countryList" type="text" class="form-control" placeholder="د تولید هیواد">
+    <datalist id="countryList">
+      <option value="USA"><option value="Germany"><option value="Switzerland"><option value="India">
+      <option value="UK"><option value="France"><option value="Japan"><option value="Italy">
+      <option value="Canada"><option value="China"><option value="Belgium"><option value="Australia">
+      <option value="Netherlands"><option value="Brazil"><option value="South Korea"><option value="Israel">
+      <option value="Denmark"><option value="Sweden"><option value="Austria"><option value="Finland">
+    </datalist>
+  </div>
+  <div class="col-md-2"><button class="btn btn-success w-100" onclick="addMedicine()">ثبت</button></div>
+</div>
+</div>
+</div>
+
+<!-- د پلور برخه -->
+<div class="card">
+<div class="card-header bg-warning text-dark text-center">درمل وپلورئ</div>
+<div class="card-body">
+<div class="row g-3">
+  <div class="col-md-3">
+    <input id="sellMed" list="medicineList" type="text" class="form-control" placeholder="د درمل نوم" oninput="autoFillPrice()">
+    <datalist id="medicineList"></datalist>
+  </div>
+  <div class="col-md-2"><input id="sellPrice" type="number" class="form-control" placeholder="د پلور قیمت"></div>
+  <div class="col-md-2"><input id="sellQty" type="text" class="form-control" placeholder="اندازه (مثال: 5 کارټنه)"></div>
+  <div class="col-md-3"><input id="customer" type="text" class="form-control" placeholder="د مشتری نوم"></div>
+  <div class="col-md-2"><button class="btn btn-primary w-100" onclick="sellMedicine()">پلور</button></div>
+</div>
+</div>
+</div>
+
+<!-- جدولونه او لټون -->
+<div class="row mb-3">
+<div class="col-md-6">
+<input id="searchMed" type="text" class="form-control" placeholder="په درملو کې لټون وکړئ..." onkeyup="searchMedicine()">
+</div>
+<div class="col-md-6">
+<input id="searchSell" type="text" class="form-control" placeholder="په پلورل شوو درملو کې لټون وکړئ..." onkeyup="searchSale()">
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+<div class="card-header bg-success text-white text-center">د راغلو درملو لیست</div>
+<div class="card-body">
+<table class="table table-bordered text-center">
+  <thead>
+    <tr><th>نوم</th><th>اخیستلو قیمت</th><th>پلورلو قیمت</th><th>اندازه</th><th>ختمېدو نېټه</th><th>تولید هیواد</th><th>عملیات</th></tr>
+  </thead>
+  <tbody id="medTable"></tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="card">
+<div class="card-header bg-info text-white text-center">د پلورل شوو درملو لیست</div>
+<div class="card-body">
+<table class="table table-bordered text-center">
+  <thead>
+    <tr><th>نوم</th><th>قیمت</th><th>اندازه</th><th>مشتری</th><th>نېټه</th><th>عملیات</th></tr>
+  </thead>
+  <tbody id="sellTable"></tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<!-- راپور -->
+<div class="card">
+<div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+  <span>📊 احصائیه او راپور</span>
+  <div>
+    <button class="btn btn-light btn-sm btn-export" onclick="exportExcel()">📗 Excel ته</button>
+    <button class="btn btn-light btn-sm btn-export" onclick="exportPDF()">📄 PDF ته</button>
+  </div>
+</div>
+<div class="card-body text-center">
+  <p>💰 د ټولو راغلو درملو ټوټل قیمت (سرمایه): <strong id="totalBuy">0</strong> افغانی</p>
+  <p>💵 د پلورل شوو درملو ټوټل قیمت: <strong id="totalSell">0</strong> افغانی</p>
+  <p>📦 د پلورل شوو درملو اندازه: <strong id="totalQty">0</strong></p>
+  <p>📈 ګټه یا تاوان: <strong id="profit">0</strong> افغانی</p>
+  <hr>
+  <h5 class="text-primary">📅 د نن ورځې راپور</h5>
+  <p>🧾 د نن ورځې پلور: <strong id="todaySell">0</strong> افغانی</p>
+  <p>📦 د نن ورځې پلورل شوي درمل: <strong id="todayQty">0</strong></p>
+  <p>📈 د نن ورځې ګټه: <strong id="todayProfit">0</strong> افغانی</p>
+  <p>📉 د نن ورځې تاوان: <strong id="todayLoss">0</strong> افغانی</p>
+</div>
+</div>
+
+<!-- رسید -->
+<div id="invoice" class="invoice card p-4">
+<h4 class="text-center mb-3">🧾 د پلور رسید</h4>
+<p><strong>مشتری:</strong> <span id="invCustomer"></span></p>
+<p><strong>درمل:</strong> <span id="invName"></span></p>
+<p><strong>اندازه:</strong> <span id="invQty"></span></p>
+<p><strong>قیمت:</strong> <span id="invPrice"></span> افغانی</p>
+<p><strong>ټول:</strong> <span id="invTotal"></span> افغانی</p>
+<button class="btn btn-outline-secondary w-100 mt-3" onclick="window.print()">🖨️ چاپ</button>
+</div>
+
+<script>
+// ==== Data ====
+let medicines = JSON.parse(localStorage.getItem('medicines')) || [];
+let sales = JSON.parse(localStorage.getItem('sales')) || [];
+
+// ==== Save ====
+function saveData() {
+  localStorage.setItem('medicines', JSON.stringify(medicines));
+  localStorage.setItem('sales', JSON.stringify(sales));
+}
+
+// ==== Add Medicine ====
+function addMedicine() {
+  const name = medName.value.trim();
+  const buyP = parseFloat(buyPrice.value) || 0;
+  const sellP = parseFloat(sellPriceInput.value) || 0;
+  const qty = quantity.value.trim();
+  const expiryDate = expiry.value;
+  const country = medCountry.value.trim();
+  if (!name || buyP <= 0 || sellP <= 0 || !qty || !expiryDate || !country) return alert('ټول معلومات ولیکئ!');
+  
+  medicines.push({ name, buyPrice: buyP, sellPrice: sellP, qty, expiry: expiryDate, country });
+  saveData(); updateMedTable(); updateMedicineDatalist(); updateTotals();
+  medName.value = buyPrice.value = sellPriceInput.value = quantity.value = expiry.value = medCountry.value = '';
+}
+
+// ==== Auto Fill Price ====
+function autoFillPrice() {
+  const name = sellMed.value.trim();
+  const med = medicines.find(m => m.name === name);
+  if (med) sellPrice.value = med.sellPrice;
+}
+
+// ==== Sell Medicine ====
+function sellMedicine() {
+  const name = sellMed.value.trim();
+  let price = parseFloat(sellPrice.value) || 0;
+  const qty = sellQty.value.trim();
+  const customerName = customer.value.trim();
+  if (!name || price <= 0 || !qty || !customerName) return alert('ټول معلومات ولیکئ!');
+
+  const medIndex = medicines.findIndex(m => m.name === name);
+  if (medIndex === -1) return alert('دا درمل شتون نلري!');
+
+  const numericQty = parseInt(qty);
+  const stockQty = parseInt(medicines[medIndex].qty) || 0;
+  if (stockQty < numericQty) return alert('په ذخیره کې دومره درمل نشته!');
+
+  price = price || medicines[medIndex].sellPrice;
+  const remainingQty = stockQty - numericQty;
+  medicines[medIndex].qty = remainingQty > 0 ? remainingQty + ' ' + medicines[medIndex].qty.split(' ').slice(1).join('') : '';
+  if (remainingQty <= 0) medicines.splice(medIndex, 1);
+
+  const today = new Date().toISOString().split('T')[0];
+  sales.push({ name, price, qty, customer: customerName, date: today, buyPrice: medicines[medIndex]?.buyPrice || 0 });
+  saveData(); updateMedTable(); updateSellTable(); updateMedicineDatalist();
+  updateTotals(); updateTodayReport();
+  showInvoice(customerName, name, qty, price);
+  sellMed.value = sellPrice.value = sellQty.value = customer.value = '';
+}
+
+// ==== Update Tables ====
+function updateMedTable() {
+  medTable.innerHTML = medicines.map((m, i) =>
+    `<tr>
+      <td>${m.name}</td><td>${m.buyPrice}</td><td>${m.sellPrice}</td><td>${m.qty}</td><td>${m.expiry}</td><td>${m.country}</td>
+      <td><button class='btn btn-sm btn-outline-primary' onclick='editMedicine(${i})'>ایډیټ</button>
+      <button class='btn btn-sm btn-outline-danger' onclick='deleteMedicine(${i})'>ډیلیټ</button></td>
+    </tr>`).join('');
+}
+
+function updateSellTable() {
+  sellTable.innerHTML = sales.map((s, i) =>
+    `<tr>
+      <td>${s.name}</td><td>${s.price}</td><td>${s.qty}</td><td>${s.customer}</td><td>${s.date}</td>
+      <td><button class='btn btn-sm btn-outline-secondary' onclick='showInvoice("${s.customer}","${s.name}","${s.qty}",${s.price})'>رسید</button>
+      <button class='btn btn-sm btn-outline-danger' onclick='deleteSale(${i})'>ډیلیټ</button></td>
+    </tr>`).join('');
+}
+
+// ==== Edit/Delete ====
+function editMedicine(i) {
+  const med = medicines[i];
+  medName.value = med.name; buyPrice.value = med.buyPrice; sellPriceInput.value = med.sellPrice;
+  quantity.value = med.qty; expiry.value = med.expiry; medCountry.value = med.country;
+  medicines.splice(i, 1); saveData(); updateMedTable(); updateMedicineDatalist();
+}
+
+function deleteMedicine(i) {
+  if (confirm('آیا ډاډه یاست؟')) { medicines.splice(i, 1); saveData(); updateMedTable(); updateTotals(); updateMedicineDatalist(); }
+}
+function deleteSale(i) {
+  if (confirm('آیا ډاډه یاست؟')) { sales.splice(i, 1); saveData(); updateSellTable(); updateTotals(); updateTodayReport(); }
+}
+
+// ==== Totals ====
+function updateTotals() {
+  const totalBuyVal = medicines.reduce((sum, m) => sum + (parseFloat(m.buyPrice) * (parseInt(m.qty)||0)), 0);
+  const totalSellVal = sales.reduce((sum, s) => sum + s.price * (parseInt(s.qty)||0), 0);
+  const totalQtyVal = sales.reduce((sum, s) => sum + (parseInt(s.qty)||0), 0);
+  const profitVal = totalSellVal - totalBuyVal;
+  totalBuy.textContent = totalBuyVal.toFixed(2
+);
+  totalSell.textContent = totalSellVal.toFixed(2);
+  totalQty.textContent = totalQtyVal;
+  profit.textContent = profitVal.toFixed(2);
+}
+
+function updateTodayReport() {
+  const today = new Date().toISOString().split('T')[0];
+  const todaySales = sales.filter(s => s.date === today);
+  const totalToday = todaySales.reduce((sum, s) => sum + s.price * (parseInt(s.qty)||0), 0);
+  const qtyToday = todaySales.reduce((sum, s) => sum + (parseInt(s.qty)||0), 0);
+  const costToday = todaySales.reduce((sum, s) => sum + s.buyPrice * (parseInt(s.qty)||0), 0);
+  todaySell.textContent = totalToday.toFixed(2);
+  todayQty.textContent = qtyToday;
+  todayProfit.textContent = Math.max(0, totalToday - costToday).toFixed(2);
+  todayLoss.textContent = Math.max(0, costToday - totalToday).toFixed(2);
+}
+
+function showInvoice(customer, name, qty, price) {
+  invCustomer.textContent = customer;
+  invName.textContent = name;
+  invQty.textContent = qty;
+  invPrice.textContent = price.toFixed(2);
+  invTotal.textContent = (parseInt(qty)||0 * price).toFixed(2);
+  invoice.style.display = 'block';
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+function updateMedicineDatalist() {
+  medicineList.innerHTML = medicines.map(m => `<option value="${m.name}">`).join('');
+}
+
+// ==== Search Functions ====
+function searchMedicine() {
+  const filter = searchMed.value.trim().toLowerCase();
+  medTable.innerHTML = medicines
+    .map((m, i) => ({ ...m, index: i }))
+    .filter(m => m.name.toLowerCase().includes(filter))
+    .map(m => `
+      <tr>
+        <td>${m.name}</td>
+        <td>${m.buyPrice}</td>
+        <td>${m.sellPrice}</td>
+        <td>${m.qty}</td>
+        <td>${m.expiry}</td>
+        <td>${m.country}</td>
+        <td>
+          <button class='btn btn-sm btn-outline-primary' onclick='editMedicine(${m.index})'>ایډیټ</button>
+          <button class='btn btn-sm btn-outline-danger' onclick='deleteMedicine(${m.index})'>ډیلیټ</button>
+        </td>
+      </tr>
+    `).join('');
+}
+
+function searchSale() {
+  const filter = searchSell.value.trim().toLowerCase();
+  sellTable.innerHTML = sales
+    .map((s, i) => ({ ...s, index: i }))
+    .filter(s => {
+      const nameMatch = s.name.toLowerCase().includes(filter);
+      const customerMatch = s.customer.toLowerCase().includes(filter);
+      const qtyMatch = s.qty.toLowerCase().includes(filter);
+      return nameMatch || customerMatch || qtyMatch;
+    })
+    .map(s => `
+      <tr>
+        <td>${s.name}</td>
+        <td>${s.price}</td>
+        <td>${s.qty}</td>
+        <td>${s.customer}</td>
+        <td>${s.date}</td>
+        <td>
+          <button class='btn btn-sm btn-outline-secondary' onclick='showInvoice("${s.customer}","${s.name}","${s.qty}",${s.price})'>رسید</button>
+          <button class='btn btn-sm btn-outline-danger' onclick='deleteSale(${s.index})'>ډیلیټ</button>
+        </td>
+      </tr>
+    `).join('');
+}
+
+// ==== Export Functions ====
+function exportExcel() {
+  const wb = XLSX.utils.book_new();
+  const ws1 = XLSX.utils.json_to_sheet(medicines);
+  const ws2 = XLSX.utils.json_to_sheet(sales);
+  XLSX.utils.book_append_sheet(wb, ws1, "درمل");
+  XLSX.utils.book_append_sheet(wb, ws2, "پلور");
+  XLSX.writeFile(wb, "Pharmacy_Report.xlsx");
+}
+
+function exportPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  doc.text("دواخانو ورځنی راپور", 10, 10);
+  doc.text(`ټول پلور: ${totalSell.textContent} AFN`, 10, 20);
+  doc.text(`ګټه/تاوان: ${profit.textContent} AFN`, 10, 30);
+  doc.text(`نن ورځ پلور: ${todaySell.textContent} AFN`, 10, 40);
+  doc.text(`نن پلورل شوي درمل: ${todayQty.textContent}`, 10, 50);
+  doc.text(`نن ورځ ګټه: ${todayProfit.textContent} AFN`, 10, 60);
+  doc.text(`نن ورځ تاوان: ${todayLoss.textContent} AFN`, 10, 70);
+  doc.save("Pharmacy_Daily_Report.pdf");
+}
+
+// ==== Initialize ====
+updateMedTable(); 
+updateSellTable(); 
+updateMedicineDatalist(); 
+updateTotals(); 
+updateTodayReport();
+   
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>

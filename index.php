@@ -5,7 +5,6 @@
 <?php $pageTitle = "Home — Code4Fun"; ?>
 <?php include __DIR__ . '/components/head.php'; ?>
 
-
 <body>
     <!-- Navbar -->
     <?php include 'components/nav.php'; ?>
@@ -156,13 +155,12 @@
                                 style="object-fit: cover; height: 200px; transition: transform 0.5s ease;">
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title fw-semibold text-primary mb-2">Tailor management system</h5>
+                            <h5 class="card-title fw-semibold text-primary mb-2">Pharmacy system</h5>
                             <p class="card-text text-muted small mb-3">
-                                A web system for tailoring shops to record orders, customer measurements, and delivery
-                                schedules.
-                                <br><strong>By:</strong> Aziz Khan
+                                A full web application to manage Drugs, borrowers and generate reports.
+                                <br><strong>By:</strong> Mohammad Rahim
                             </p>
-                            <a href="projects.php#project-2"
+                            <a href="projects.php#project-9"
                                 class="btn btn-outline-primary btn-sm mt-auto rounded-pill px-3">
                                 <i class="bi bi-box-arrow-up-right me-1"></i> View Details
                             </a>

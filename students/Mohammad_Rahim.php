@@ -57,18 +57,20 @@
             <h4 class="fw-bold mb-4 text-center" data-aos="fade-up">Projects by Mohammad Rahim</h4>
             <div class="row g-4">
                 <!-- Example Project Card -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="col-md-6 col-lg-4" id="project-9" data-aos="fade-up">
                     <div class="card shadow-sm h-100 project-card">
                         <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1600&auto=format&fit=crop"
-                            class="card-img-top" alt="Store Management System">
+                            class="card-img-top" alt="Project 1">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Store Management System</h5>
-                            <p class="card-text small text-muted">
-                                A full web application for managing books, borrowers, and generating reports.
+                            <h5 class="card-title">Pharmacy system </h5>
+                            <p class="card-text text-muted small">
+                                A full web application to manage Drugs, borrowers and generate reports.<br>
+                                By: <a href="students/Mohammad_Rahim.php"
+                                    class="text-decoration-none fw-semibold">Mohammad Rahim
+                                </a>
                             </p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="../assets/projects/kabir/index.php" class="btn btn-primary btn-sm">Live
-                                    Demo</a>
+                                <a href="../assets/projects/rahim/index.html" class="btn btn-primary btn-sm">Live Demo</a>
                                 <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
                             </div>
                         </div>
