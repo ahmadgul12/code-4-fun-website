@@ -1,38 +1,14 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About — Code4Fun</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
+<?php $pageTitle = "About — Code4Fun"; ?>
+<?php include __DIR__ . '/components/head.php'; ?>
+
 
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">Code4Fun — UNHCR</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="donors.html">Donors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="students.html">Students</a></li>
-                    <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include 'components/nav.php'; ?>
 
     <!-- About -->
     <section class="py-5">
@@ -96,7 +72,7 @@
                             alt="Project Monitor" width="130" height="130"
                             style="object-fit: cover; border: 3px solid #0d6efd;">
                         <h5 class="fw-semibold text-primary mb-1">Zabihullah Nahzatmal</h5>
-                        <p class="text-muted small mb-1">Project Monitor</p>
+                        <p class="text-muted small mb-1">Provincial Focal Point</p>
                         <p class="small text-secondary mb-0">
                             Supports learners in hands-on sessions, assists in project evaluations,
                             and ensures quality progress across training activities.
@@ -151,59 +127,10 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer text-light pt-5 pb-3" style="background: linear-gradient(135deg, #0d6efd 0%, #012c61 100%);">
-        <div class="container">
-            <div class="row gy-4">
-                <div class="col-md-4">
-                    <h5 class="fw-bold mb-2 text-uppercase">Code4Fun</h5>
-                    <p class="small opacity-75">
-                        A free IT training program supported by <strong>UNHCR</strong> and implemented by
-                        <strong>CHA</strong>.
-                        Empowering youth with Web and Mobile App Development skills.
-                    </p>
-                    <div class="mt-3">
-                        <img src="assets/img/donors/unhcr-logo.png" alt="UNHCR" style="height:35px; margin-right:10px;">
-                        <img src="assets/img/donors/cha-logo.png" alt="CHA" style="height:35px;">
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <h6 class="fw-semibold mb-3 text-uppercase">Quick Links</h6>
-                    <ul class="list-unstyled small">
-                        <li><a href="index.html" class="text-decoration-none link-light">Home</a></li>
-                        <li><a href="about.html" class="text-decoration-none link-light">About</a></li>
-                        <li><a href="projects.html" class="text-decoration-none link-light">Projects</a></li>
-                        <li><a href="donors.html" class="text-decoration-none link-light">Donors</a></li>
-                        <li><a href="contact.html" class="text-decoration-none link-light">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4">
-                    <h6 class="fw-semibold mb-3 text-uppercase">Contact</h6>
-                    <p class="small mb-1"><i class="bi bi-envelope me-2"></i>
-                        <a href="mailto:info@south-code4fun.com"
-                            class="text-decoration-none text-light">info@south-code4fun.com</a>
-                    </p>
-                    <p class="small mb-0"><i class="bi bi-geo-alt me-2"></i>Qalat, Zabul, Afghanistan</p>
-                    <div class="mt-3">
-                        <a href="#" class="text-light me-3"><i class="bi bi-facebook fs-5"></i></a>
-                        <a href="#" class="text-light me-3"><i class="bi bi-instagram fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-globe fs-5"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr class="my-4 border-light opacity-25">
-            <div class="text-center small opacity-75">
-                © 2025 <strong>Code4Fun</strong> | Designed by <strong>AhmadGul</strong> — Code4Fun Trainer
-            </div>
-        </div>
-    </footer>
+    <?php include 'components/footer.php'; ?>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script> AOS.init({ once: true, duration: 700 }); </script>
+     <?php include __DIR__ . '/components/scripts.php'; ?>
 </body>
 
 </html>

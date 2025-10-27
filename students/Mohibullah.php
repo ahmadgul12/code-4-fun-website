@@ -4,9 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mohammad-kabir — Student Profile | Code4Fun</title>
+    <title>Mohibullah — Student Profile | Code4Fun</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
@@ -15,18 +16,18 @@
     <!-- Navbar -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="../index.html">Code4Fun — UNHCR</a>
+            <a class="navbar-brand fw-bold" href="../index.php">Code4Fun — UNHCR</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link active" href="../index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../donors.html">Donors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../students.html">Students</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../projects.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../donors.php">Donors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../students.php">Students</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../projects.php">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.php">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -35,15 +36,13 @@
     <!-- Profile Section -->
     <section class="py-5 bg-light">
         <div class="container text-center" data-aos="fade-up">
-            <img src="../assets/img/students/kabir-ahmad.PNG" class="rounded-circle shadow mb-3" width="120"
-                height="120" alt="mohammad-kabir">
-            <h2 class="fw-bold mb-1">mohammad-kabir</h2>
-            <p class="text-muted mb-3">Web Developer | Code4Fun Graduate</p>
+            <img src="../assets/img/students/mohib.jpg" class="rounded-circle shadow mb-3" width="120"
+                height="120" alt="Mohibullah">
+            <h2 class="fw-bold mb-1">Mohibullah</h2>
+            <p class="text-muted mb-3">Web Developer | Code4Fun Student</p>
             <p class="mx-auto" style="max-width: 700px;">
-                mohammad-kabir is a passionate web developer from Zabul. During the Code4Fun training, he built several
-                web
-                apps including a full Store Management System. He enjoys solving real-world problems through technology
-                and helping peers learn coding.
+                Mohibullah is a web developer from Zabul. He loves solving
+                 problems with technology and helping others learn coding.
             </p>
             <div class="mt-3">
                 <a href="#" class="btn btn-outline-dark btn-sm"><i class="bi bi-github"></i> GitHub</a>
@@ -55,7 +54,7 @@
     <!-- Student's Projects -->
     <section class="py-5">
         <div class="container">
-            <h4 class="fw-bold mb-4 text-center" data-aos="fade-up">Projects by mohammad-kabir</h4>
+            <h4 class="fw-bold mb-4 text-center" data-aos="fade-up">Projects by Mohibullah</h4>
             <div class="row g-4">
                 <!-- Example Project Card -->
                 <div class="col-md-6 col-lg-4" data-aos="fade-up">
@@ -68,7 +67,7 @@
                                 A full web application for managing books, borrowers, and generating reports.
                             </p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="../assets/projects/kabir/index.html" class="btn btn-primary btn-sm">Live
+                                <a href="../assets/projects/kabir/index.php" class="btn btn-primary btn-sm">Live
                                     Demo</a>
                                 <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
                             </div>

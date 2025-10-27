@@ -1,36 +1,14 @@
+
 <!doctype html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Code4Fun</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-</head>
+<?php $pageTitle = "Home — Code4Fun"; ?>
+<?php include __DIR__ . '/components/head.php'; ?>
+
 
 <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">Code4Fun — UNHCR</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="donors.html">Donors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="students.html">Students</a></li>
-                    <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Navbar -->
+    <?php include 'components/nav.php'; ?>
     <section class="hero-section">
         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="carousel-inner">
@@ -43,8 +21,8 @@
                                 <h1 class="display-5 fw-bold">Code4Fun — UNHCR</h1>
                                 <p class="lead">Learn Web Development & Mobile App Development, build real software
                                     projects.</p>
-                                <a href="projects.html" class="btn btn-primary btn-lg me-2">See Student Projects</a>
-                                <a href="about.html" class="btn btn-outline-light btn-lg">About the Course</a>
+                                <a href="projects.php" class="btn btn-primary btn-lg me-2">See Student Projects</a>
+                                <a href="about.php" class="btn btn-outline-light btn-lg">About the Course</a>
                             </div>
                         </div>
                     </div>
@@ -58,7 +36,7 @@
                                 <h1 class="display-5 fw-bold">Develop Websites & Mobile Apps</h1>
                                 <p class="lead">From HTML/CSS/JavaScript to backend and mobile deployment — get
                                     hands-on.</p>
-                                <a href="about.html" class="btn btn-light btn-lg">Learn More</a>
+                                <a href="about.php" class="btn btn-light btn-lg">Learn More</a>
                             </div>
                         </div>
                     </div>
@@ -72,7 +50,7 @@
                                 <h1 class="display-5 fw-bold">Supported by UNHCR & Implemented by CHA</h1>
                                 <p class="lead">Empowering youth through code in partnership with humanitarian
                                     organisations.</p>
-                                <a href="donors.html" class="btn btn-outline-light btn-lg">Our Partners</a>
+                                <a href="donors.php" class="btn btn-outline-light btn-lg">Our Partners</a>
                             </div>
                         </div>
                     </div>
@@ -116,7 +94,7 @@
         <div class="container" data-aos="fade-up">
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h3 class="mb-0">Our Partner Organisations</h3>
-                <a href="donors.html" class="link-primary">View all partners →</a>
+                <a href="donors.php" class="link-primary">View all partners →</a>
             </div>
             <div id="partnerCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -144,7 +122,7 @@
         <div class="container" data-aos="fade-up">
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h3 class="mb-0">Featured Student Projects</h3>
-                <a href="projects.html" class="link-primary">Browse all projects →</a>
+                <a href="projects.php" class="link-primary">Browse all projects →</a>
             </div>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
@@ -162,7 +140,7 @@
                                 businesses.
                                 <br><strong>By:</strong> Mohammad kabir
                             </p>
-                            <a href="projects.html#project-1"
+                            <a href="projects.php#project-1"
                                 class="btn btn-outline-primary btn-sm mt-auto rounded-pill px-3">
                                 <i class="bi bi-box-arrow-up-right me-1"></i> View Details
                             </a>
@@ -184,7 +162,7 @@
                                 schedules.
                                 <br><strong>By:</strong> Aziz Khan
                             </p>
-                            <a href="projects.html#project-2"
+                            <a href="projects.php#project-2"
                                 class="btn btn-outline-primary btn-sm mt-auto rounded-pill px-3">
                                 <i class="bi bi-box-arrow-up-right me-1"></i> View Details
                             </a>
@@ -205,7 +183,7 @@
                                 A system designed for small clinics to manage patient records.
                                 <br><strong>By:</strong> Zulmai
                             </p>
-                            <a href="projects.html#project-6"
+                            <a href="projects.php#project-6"
                                 class="btn btn-outline-primary btn-sm mt-auto rounded-pill px-3">
                                 <i class="bi bi-box-arrow-up-right me-1"></i> View Details
                             </a>
@@ -220,71 +198,20 @@
             <h3 class="mb-3 fw-bold">Want to Support or Join?</h3>
             <p class="mb-4 lead">Help mentor students, sponsor equipment, or join our next course batch. Your
                 contribution makes a difference!</p>
-            <a href="contact.html" class="btn btn-light btn-lg px-4 me-2 shadow-sm" style="transition: transform 0.3s;">
+            <a href="contact.php" class="btn btn-light btn-lg px-4 me-2 shadow-sm" style="transition: transform 0.3s;">
                 Contact Us
             </a>
-            <a href="projects.html" class="btn btn-outline-light btn-lg px-4 shadow-sm"
+            <a href="projects.php" class="btn btn-outline-light btn-lg px-4 shadow-sm"
                 style="transition: transform 0.3s;">
                 View Courses
             </a>
         </div>
     </section>
-    <footer class="footer text-light pt-5 pb-3" style="background: linear-gradient(135deg, #0d6efd 0%, #012c61 100%);">
-        <div class="container">
-            <div class="row gy-4">
-                <!-- About -->
-                <div class="col-md-4">
-                    <h5 class="fw-bold mb-2 text-uppercase">Code4Fun</h5>
-                    <p class="small opacity-75">
-                        A free IT training program supported by <strong>UNHCR</strong> and implemented by
-                        <strong>CHA</strong>.
-                        Empowering youth with Web and Mobile App Development skills.
-                    </p>
-                    <div class="mt-3">
-                        <img src="assets/img/donors/unhcr-logo.png" alt="UNHCR" style="height:35px; margin-right:10px;">
-                        <img src="assets/img/donors/cha-logo.png" alt="CHA" style="height:35px;">
-                    </div>
-                </div>
-                <!-- Quick Links -->
-                <div class="col-md-4">
-                    <h6 class="fw-semibold mb-3 text-uppercase">Quick Links</h6>
-                    <ul class="list-unstyled small">
-                        <li class="mb-1"><a href="index.html" class="text-decoration-none link-light">Home</a></li>
-                        <li class="mb-1"><a href="about.html" class="text-decoration-none link-light">About</a></li>
-                        <li class="mb-1"><a href="courses.html" class="text-decoration-none link-light">Courses</a></li>
-                        <li class="mb-1"><a href="projects.html" class="text-decoration-none link-light">Projects</a>
-                        </li>
-                        <li><a href="contact.html" class="text-decoration-none link-light">Contact</a></li>
-                    </ul>
-                </div>
-                <!-- Contact -->
-                <div class="col-md-4">
-                    <h6 class="fw-semibold mb-3 text-uppercase">Contact</h6>
-                    <p class="small mb-1">
-                        <i class="bi bi-envelope me-2"></i>
-                        <a href="mailto:info@south-code4fun.com"
-                            class="text-decoration-none text-light">info@south-code4fun.com</a>
-                    </p>
-                    <p class="small mb-0"><i class="bi bi-geo-alt me-2"></i>Qalat, Zabul, Afghanistan</p>
-                    <div class="mt-3">
-                        <a href="#" class="text-light me-3"><i class="bi bi-facebook fs-5"></i></a>
-                        <a href="#" class="text-light me-3"><i class="bi bi-instagram fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-globe fs-5"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr class="my-4 border-light opacity-25">
-            <div class="text-center small opacity-75">
-                © 2025 <strong>Code4Fun</strong> | Designed by <strong>AhmadGul</strong> — Code4Fun Trainer
-            </div>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script>
-        AOS.init({ once: true, duration: 800 });
-    </script>
+    <!-- Footer -->
+    <?php include 'components/footer.php'; ?>
+
+    <!-- Scripts -->
+     <?php include __DIR__ . '/components/scripts.php'; ?>
 </body>
 
 </html>
