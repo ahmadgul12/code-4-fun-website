@@ -46,6 +46,25 @@
             </div>
         </div>
     </section>
+    
+    <!-- Student Introduction Video -->
+    <section class="py-5 bg-light">
+        <div class="container" data-aos="fade-up">
+            <h2 class="fw-bold text-center mb-4">Meet Our Students</h2>
+            <p class="text-muted text-center mb-5" style="max-width: 800px; margin: 0 auto;">
+                Watch as each student introduces themselves and shares a little about their journey in the
+                <strong>Code4Fun</strong> program.
+            </p>
+
+            <div class="ratio ratio-16x9 shadow rounded overflow-hidden">
+                <video controls poster="./assets/img/class/IMG-20251023-WA0005.jpg">
+                    <source src="./assets/videos/students-intro.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Who We Are -->
     <section class="py-5 bg-light">
