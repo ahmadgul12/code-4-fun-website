@@ -8,7 +8,7 @@
 <body>
 
     <!-- Navbar -->
-    <?php include 'components/nav.php'; ?>    
+    <?php include 'components/nav.php'; ?>
 
     <section class="py-5">
         <div class="container" data-aos="fade-up">
@@ -174,7 +174,7 @@
                                 </a>
                             </p>
                             <div class="mt-auto d-flex gap-2">
-                                <a href="assets/projects/kabir/index.php" class="btn btn-primary btn-sm">Live Demo</a>
+                                <a href="assets/projects/asif/index.html" class="btn btn-primary btn-sm">Live Demo</a>
                                 <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm">View Code</a>
                             </div>
                         </div>
@@ -210,7 +210,7 @@
     <?php include 'components/footer.php'; ?>
 
     <!-- Scripts -->
-     <?php include __DIR__ . '/components/scripts.php'; ?>
+    <?php include __DIR__ . '/components/scripts.php'; ?>
 </body>
 
 </html>

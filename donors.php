@@ -57,8 +57,8 @@
     <!-- Footer -->
     <?php include 'components/footer.php'; ?>
 
-   <!-- Scripts -->
-     <?php include __DIR__ . '/components/scripts.php'; ?>
+    <!-- Scripts -->
+    <?php include __DIR__ . '/components/scripts.php'; ?>
 </body>
 
 </html>

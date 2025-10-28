@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -209,7 +208,7 @@
     <?php include 'components/footer.php'; ?>
 
     <!-- Scripts -->
-     <?php include __DIR__ . '/components/scripts.php'; ?>
+    <?php include __DIR__ . '/components/scripts.php'; ?>
 </body>
 
 </html>

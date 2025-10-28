@@ -21,7 +21,7 @@
                 <!-- Student Card Example -->
                 <div class="col-md-6 col-lg-4 text-center" data-aos="fade-up">
                     <a href="students/mohammad_kabir.php" class="text-decoration-none text-dark">
-                        <img src="assets/img/students/kabir-ahmad.png" class="rounded-circle mb-3 shadow-sm"
+                        <img src="assets/img/students/kabir-ahmad.PNG" class="rounded-circle mb-3 shadow-sm"
                             alt="Ahmad Khan" width="140" height="140">
                         <h5 class="fw-semibold">Mohammad Kabir</h5>
                         <p class="text-muted small">Web Developer | Passionate about building apps.</p>
@@ -105,8 +105,8 @@
 
     <!-- Footer -->
     <?php include 'components/footer.php'; ?>
-<!-- Scripts -->
-     <?php include __DIR__ . '/components/scripts.php'; ?>
+    <!-- Scripts -->
+    <?php include __DIR__ . '/components/scripts.php'; ?>
 </body>
 
 </html>
