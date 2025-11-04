@@ -190,6 +190,38 @@
             </div>
         </div>
     </section>
+    <section id="success-story" class="py-5 bg-light">
+        <div class="container" data-aos="fade-up">
+            <div class="text-center mb-5">
+                <h3 class="fw-bold mb-3">Student Success Story</h3>
+                <p class="text-muted mb-0">Empowering students through technology — real impact from Code4Fun graduates.</p>
+            </div>
+
+            <div class="row align-items-center g-4">
+                <div class="col-md-5" data-aos="fade-right">
+                    <div class="rounded overflow-hidden shadow-sm">
+                        <img src="assets/img/students/mohammad-kabir-success-story.png" alt="Mohammad Kabir Success Story" class="img-fluid" style="object-fit: cover;">
+                    </div>
+                </div>
+
+                <div class="col-md-7" data-aos="fade-left">
+                    <h4 class="fw-semibold text-primary">Mohammad Kabir — From Struggle to Skilled Web Developer</h4>
+                    <p class="text-muted">
+                        Mohammad Kabir, a student from Kharwaryan village, Qalat (Zabul), once faced unemployment and hardship
+                        while supporting his large family. After joining the <strong>UNHCR-CHA Code-4-Fun</strong> program, he learned
+                        professional web technologies including <em>HTML, CSS, JavaScript, Bootstrap, and PHP</em>.
+                        Today, Kabir feels confident in his abilities and plans to start his own business or work as a
+                        <strong>freelance / remote web developer</strong> to support his family independently.
+                        His story reflects how learning digital skills can transform lives and bring new hope for the future.
+                    </p>
+                    <a href="assets/stories/mohammad-kabir-success-story.pdf" class="btn btn-outline-primary rounded-pill px-4" target="_blank">
+                        <i class="bi bi-file-earmark-text me-2"></i> Read Full Story (PDF)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-5 text-center text-white" style="background: linear-gradient(135deg, #0d6efd 0%, #0056b3 100%);">
         <div class="container" data-aos="zoom-in">
             <h3 class="mb-3 fw-bold">Want to Support or Join?</h3>
