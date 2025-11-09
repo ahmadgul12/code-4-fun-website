@@ -193,31 +193,147 @@
     <section id="success-story" class="py-5 bg-light">
         <div class="container" data-aos="fade-up">
             <div class="text-center mb-5">
-                <h3 class="fw-bold mb-3">Student Success Story</h3>
-                <p class="text-muted mb-0">Empowering students through technology — real impact from Code4Fun graduates.</p>
+                <h2 class="fw-bold mb-3">Student Success Stories</h2>
+                <p class="text-muted fs-5">Empowering students through technology — real impact from Code4Fun graduates.</p>
             </div>
 
-            <div class="row align-items-center g-4">
-                <div class="col-md-5" data-aos="fade-right">
-                    <div class="rounded overflow-hidden shadow-sm">
-                        <img src="assets/img/students/mohammad-kabir-success-story.png" alt="Mohammad Kabir Success Story" class="img-fluid" style="object-fit: cover;">
+            <!-- Carousel for Success Stories -->
+            <div id="successStoriesCarousel" class="carousel slide" data-bs-ride="carousel">
+                
+
+                <div class="carousel-inner">
+                    <!-- Story 1: Mohammad Kabir -->
+                    <div class="carousel-item active">
+                        <div class="row align-items-center g-4 px-3 px-md-5">
+                            <div class="col-md-5" data-aos="fade-right">
+                                <div class="rounded-4 overflow-hidden shadow">
+                                    <img src="assets/img/students/mohammad-kabir-success-story.png"
+                                        alt="Mohammad Kabir Success Story"
+                                        class="img-fluid w-100"
+                                        style="height: 400px; object-fit: cover;">
+                                </div>
+                            </div>
+                            <div class="col-md-7" data-aos="fade-left">
+                                <h3 class="fw-bold text-primary mb-3">Mohammad Kabir — From Struggle to Skilled Web Developer</h3>
+                                <p class="text-muted fs-6 mb-4">
+                                    Mohammad Kabir, a student from Kharwaryan village, Qalat (Zabul), once faced unemployment and hardship
+                                    while supporting his large family. After joining the <strong>UNHCR-CHA Code-4-Fun</strong> program, he learned
+                                    professional web technologies including <em>HTML, CSS, JavaScript, Bootstrap, and PHP</em>.
+                                    Today, Kabir feels confident in his abilities and plans to start his own business or work as a
+                                    <strong>freelance / remote web developer</strong> to support his family independently.
+                                </p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">HTML & CSS</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">JavaScript</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">Bootstrap</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">PHP</span>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="assets/stories/mohammad-kabir-success-story.pdf"
+                                        class="btn btn-primary btn-lg rounded-pill px-4"
+                                        target="_blank">
+                                        <i class="bi bi-file-earmark-pdf me-2"></i> Read Full Story
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="carousel-item">
+                        <div class="row align-items-center g-4 px-3 px-md-5">
+                            <div class="col-md-5" data-aos="fade-right">
+                                <div class="rounded-4 overflow-hidden shadow">
+                                    <img src="assets/img/students/asma-success-story.png"
+                                        alt="Asma Tourab Success Story"
+                                        class="img-fluid w-100"
+                                        style="height: 400px; object-fit: cover;">
+                                </div>
+                            </div>
+                            <div class="col-md-7" data-aos="fade-left">
+                                <h3 class="fw-bold text-primary mb-3">Asma (Tourab) — From Challenges to Digital Empowerment</h3>
+                                <p class="text-muted fs-6 mb-4">
+                                    Asma (Tourab), a 20-year-old from Qalat, Zabul, faced many challenges when educational opportunities for women became limited.
+                                    Determined to support her family and continue learning, she joined the
+                                    <strong>UNHCR-CHA Code-4-Fun</strong> program — a professional IT training that taught her
+                                    <em>HTML, CSS, JavaScript, Bootstrap, and PHP</em>.
+                                    The program helped her gain valuable technical skills and confidence to start her own projects
+                                    and dream of a sustainable career in technology.
+                                    Today, Asma is committed to sharing her knowledge and inspiring other young women to pursue education and independence.
+                                </p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">HTML</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">CSS</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">JavaScript</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">Bootstrap 5</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">PHP</span>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="assets/stories/asma-tourab-success-story.pdf"
+                                        class="btn btn-primary btn-lg rounded-pill px-4"
+                                        target="_blank">
+                                        <i class="bi bi-file-earmark-pdf me-2"></i> Read Full Story
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="carousel-item">
+                        <div class="row align-items-center g-4 px-3 px-md-5">
+                            <div class="col-md-5" data-aos="fade-right">
+                                <div class="rounded-4 overflow-hidden shadow">
+                                    <img src="assets/img/students/zia-success-story.jpg"
+                                        alt="Mahmood Zia Success Story"
+                                        class="img-fluid w-100"
+                                        style="height: 400px; object-fit: cover;">
+                                </div>
+                            </div>
+                            <div class="col-md-7" data-aos="fade-left">
+                                <h3 class="fw-bold text-primary mb-3">Mahmood Zia — From Refugee Challenges to Digital Opportunities</h3>
+                                <p class="text-muted fs-6 mb-4">
+                                    Mahmood Zia, 18, and his family returned to Afghanistan after living as refugees in Pakistan for many years.
+                                    Facing poverty and uncertainty, Mahmood’s dream of education seemed distant until he joined the
+                                    <strong>CHA-UNHCR Code-4-Fun</strong> program in Qalat, Zabul.
+                                    The program teaches professional skills like web development and JavaScript, giving students tools to succeed.
+                                    Mahmood is now learning to build websites and hopes to work as a freelancer, creating a better life for himself
+                                    and contributing to his community. His family is deeply grateful for the opportunity and support from UNHCR.
+                                </p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">Web Development</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">JavaScript</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">HTML</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">CSS</span>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="assets/stories/mahmood-zia-success-story.pdf"
+                                        class="btn btn-primary btn-lg rounded-pill px-4"
+                                        target="_blank">
+                                        <i class="bi bi-file-earmark-pdf me-2"></i> Read Full Story
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="col-md-7" data-aos="fade-left">
-                    <h4 class="fw-semibold text-primary">Mohammad Kabir — From Struggle to Skilled Web Developer</h4>
-                    <p class="text-muted">
-                        Mohammad Kabir, a student from Kharwaryan village, Qalat (Zabul), once faced unemployment and hardship
-                        while supporting his large family. After joining the <strong>UNHCR-CHA Code-4-Fun</strong> program, he learned
-                        professional web technologies including <em>HTML, CSS, JavaScript, Bootstrap, and PHP</em>.
-                        Today, Kabir feels confident in his abilities and plans to start his own business or work as a
-                        <strong>freelance / remote web developer</strong> to support his family independently.
-                        His story reflects how learning digital skills can transform lives and bring new hope for the future.
-                    </p>
-                    <a href="assets/stories/mohammad-kabir-success-story.pdf" class="btn btn-outline-primary rounded-pill px-4" target="_blank">
-                        <i class="bi bi-file-earmark-text me-2"></i> Read Full Story (PDF)
-                    </a>
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#successStoriesCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-primary rounded-circle p-3" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#successStoriesCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-primary rounded-circle p-3" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <!-- Story Counter -->
+            <div class="text-center mt-4">
+                <p class="text-muted mb-0">
+                    <i class="bi bi-people-fill text-primary me-2"></i>
+                    <strong>3 Success Stories</strong> from our Code4Fun graduates
+                </p>
             </div>
         </div>
     </section>
@@ -232,7 +348,7 @@
             </a>
             <a href="projects.php" class="btn btn-outline-light btn-lg px-4 shadow-sm"
                 style="transition: transform 0.3s;">
-                View Courses
+                View Projects
             </a>
         </div>
     </section>
